@@ -51,7 +51,7 @@ class Home extends React.Component {
     this.props.onClick({
       homeActive: false,
       accountActive: true
-    })
+    });
   }
 
   render() {
@@ -83,6 +83,11 @@ class Account extends React.Component {
 
   onNext(event) {
     event.preventDefault();
+    this.setState({
+      name: '',
+      email: '',
+      password: ''
+    })
     this.props.onClick({
       accountActive: false,
       shippingActive: true
@@ -94,17 +99,17 @@ class Account extends React.Component {
       <form onSubmit={this.onNext}>
         <div>
           <label> Name:
-          <input name="name" onChange={this.onInput} />
+          <input name="name" onChange={this.onInput} value={this.state.name}/>
           </label>
         </div>
         <div>
           <label> Email:
-            <input name="email" onChange={this.onInput} />
+            <input name="email" onChange={this.onInput} value={this.state.email}/>
           </label>
         </div>
         <div>
           <label> Password:
-            <input type="password" name="password" onChange={this.onInput} />
+            <input type="password" name="password" onChange={this.onInput} value={this.state.password}/>
           </label>
         </div>
         <button>Next</button>
@@ -117,8 +122,8 @@ class Shipping extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      street1: '',
-      street2: '',
+      streetOne: '',
+      streetTwo: '',
       city: '',
       state: '',
       zip: '',
@@ -135,6 +140,14 @@ class Shipping extends React.Component {
 
   onNext(event) {
     event.preventDefault();
+    this.setState({
+      streetOne: '',
+      streetTwo: '',
+      city: '',
+      state: '',
+      zip: '',
+      phone: ''
+    });
     this.props.onClick({
       shippingActive: false,
       paymentActive: true
@@ -146,27 +159,27 @@ class Shipping extends React.Component {
       <form onSubmit={this.onNext}>
         <div>
           <label> Street1:
-          <input name="street1" onChange={this.onInput} />
+          <input name="streetOne" onChange={this.onInput} value={this.state.streetOne}/>
           </label>
         </div>
         <div>
           <label> Street2:
-            <input name="street2" onChange={this.onInput} />
+            <input name="streetTwo" onChange={this.onInput} value={this.state.streetTwo}/>
           </label>
         </div>
         <div>
           <label> City:
-            <input name="city" onChange={this.onInput} />
+            <input name="city" onChange={this.onInput} value={this.state.city}/>
           </label>
         </div>
         <div>
           <label> Zipcode:
-            <input name="zip" onChange={this.onInput} />
+            <input name="zip" onChange={this.onInput} value={this.state.zip}/>
           </label>
         </div>
         <div>
           <label> Phone:
-            <input type="tel" name="phone" onChange={this.onInput} />
+            <input type="tel" name="phone" onChange={this.onInput} value={this.state.phone}/>
           </label>
         </div>
         <button>Next</button>
@@ -194,6 +207,11 @@ class Payment extends React.Component {
 
   onNext(event) {
     event.preventDefault();
+    this.setState({
+      cc: '',
+      cvv: '',
+      zip: ''
+    });
     this.props.onClick({
       paymentActive: false,
       confirmActive: true
@@ -205,17 +223,17 @@ class Payment extends React.Component {
       <form onSubmit={this.onNext}>
         <div>
           <label> Credit Card:
-          <input name="cc" onChange={this.onInput} />
+          <input name="cc" onChange={this.onInput} value={this.state.cc}/>
           </label>
         </div>
         <div>
           <label> CVV:
-            <input name="cvv" onChange={this.onInput} />
+            <input name="cvv" onChange={this.onInput} value={this.state.cvv}/>
           </label>
         </div>
         <div>
           <label> Zipcode:
-            <input name="zip" onChange={this.onInput} />
+            <input name="zip" onChange={this.onInput} value={this.state.zip}/>
           </label>
         </div>
         <button>Next</button>
