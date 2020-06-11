@@ -13,7 +13,6 @@ class App extends React.Component {
 
   onNext(formState) {
     this.setState(formState)
-    console.log(formState)
   }
 
   render() {
@@ -228,16 +227,27 @@ class Payment extends React.Component {
 class Confirmation extends React.Component {
   constructor(props) {
     super(props);
+    this.onNext = this.onNext.bind(this);
+  }
+
+  onNext(event) {
+    event.preventDefault();
+    this.props.onClick({
+      confirmActive: false,
+      homeActive: true
+    });
   }
 
   render() {
-    return(
+    return (
       <div>
         <h3>Detail Confiration</h3>
         <div>Customer Details</div>
         <div>Shipping Details</div>
         <div>Payment Details</div>
+        <button name="purchase" onClick={this.onNext}>Purchase</button>
       </div>
+
     )
   }
 }
