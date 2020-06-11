@@ -1,0 +1,24 @@
+{
+  "name": "checkout",
+  "version": "1.0.0",
+  "description": "challenge_3",
+  "main": "server.js",
+  "dependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "react": "^16.13.1",
+    "react-dev": "0.0.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node ./server/index.js",
+    "babel-dev": "./node_modules/.bin/babel --watch client --out-dir public --presets @babel/preset-react --source-maps inline"
+  },
+  "author": "Jchan",
+  "license": "ISC"
+}
