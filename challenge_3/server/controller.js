@@ -26,7 +26,7 @@ module.exports = {
         console.log(err)
         res.status(400).send('Could not add CC');
       } else {
-        res.status(400).send('CC added');
+        res.status(201).send('CC added');
       }
     });
   }

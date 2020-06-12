@@ -5,9 +5,11 @@ const Parser = require('body-parser');
 const app = express();
 const port = 3000;
 
-app.use(Parser.urlencoded());
+//app.use(Parser.urlencoded());
+app.use(Parser.json());
+app.use(Parser.urlencoded({extended: true}));
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.post('/checkout/account', (req, res) => controller.createAccount(req, res));
 app.post('/checkout/shipping', (req, res) => controller.createShipping(req, res));

@@ -76,6 +76,10 @@ class Account extends React.Component {
     this.onNext = this.onNext.bind(this);
   }
 
+  // componentDidMount() {
+
+  // }
+
   onInput(event) {
     event.preventDefault();
     this.setState({[event.target.name] : event.target.value});
@@ -83,11 +87,18 @@ class Account extends React.Component {
 
   onNext(event) {
     event.preventDefault();
-    this.setState({
-      name: '',
-      email: '',
-      password: ''
-    })
+    $.ajax({
+      type: 'POST',
+      url: '/checkout/account',
+      data: this.state,
+      success: () => {console.log('Added Account')},
+      error: err => console.log('Error in creating Account')
+    });
+    // this.setState({
+    //   name: '',
+    //   email: '',
+    //   password: ''
+    // })
     this.props.onClick({
       accountActive: false,
       shippingActive: true
@@ -140,6 +151,13 @@ class Shipping extends React.Component {
 
   onNext(event) {
     event.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: '/checkout/shipping',
+      data: this.state,
+      success: console.log('Success'),
+      error: err => console.log('Error in creating Account')
+    });
     this.setState({
       streetOne: '',
       streetTwo: '',
@@ -207,6 +225,13 @@ class Payment extends React.Component {
 
   onNext(event) {
     event.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: 'localhost:3000/account',
+      data: this.state,
+      success: console.log('Success'),
+      error: err => console.log('Error in creating Account')
+    });
     this.setState({
       cc: '',
       cvv: '',
